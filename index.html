@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="mobile-screen">
+        <div class="colorbar"></div>
+        <div class="view">
+            <div class="arrow"></div>
+            <div class="pat"><h2>View Patient</h2></div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="name">
+                <script>
+                    fetch('fetch.php') 
+                      .then(response => response.text())
+                      .then(data => {
+                        document.querySelector('.name').innerHTML = data;
+                      });
+                </script>
+            </div>
+            <div class="goal">
+                <h5>Goal Reached</h5>
+                <div class="ring-container">
+                    <div class="ring"></div>
+                    <div class="ov-ring"></div>
+                    <h1 id="percent">50%</h1>
+                    </div>
+                <div class="g-container">
+                        <div class="label">EMG</div>
+                        <div class="graph"></div>
+                    </div>
+                    <div class="r-container">
+                        <div class="label">ROM</div>
+                        <div class="graphr"></div>
+                    </div>
+            </div>
+            
+        </div>
+        <hr>
+        <div class="details">
+            <script>
+                fetch('detail.php')
+                .then(response => response.text())
+                .then(data => {
+                    const detailsDiv = document.querySelector('.details');
+                    detailsDiv.innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+            </script>
+        </div>
+        <hr>
+
+        <div class="history">
+            <script>
+                fetch('med.php')
+                .then(response => response.text())
+                .then(data => {
+                    const detailsDiv = document.querySelector('.history');
+                    detailsDiv.innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+              </script>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>
